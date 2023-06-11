@@ -39,6 +39,14 @@ app.layout = dbc.Container([
         ], width=12),
 
     ], className='mb-2 mt-5'),
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    html.H4('SPECIFIC JOURNAL\'S DETAILS'),
+    html.Hr(style={"width": "100%", 'borderTop': '3px solid deepskyblue',
+            'borderBottom': '2px solid aqua', "opacity": "unset"}),
+    html.H6('In this section, use the right section to select the journal you would like to see it\'s details'),
+
 
     dbc.Row([
         dbc.Col([
@@ -52,8 +60,8 @@ app.layout = dbc.Container([
                         # html.P('See full list here'),
 
                     ], style={'textAlign': 'center'})
-                ]),
-                ], width=3),
+                ], style={'height': '10rem'}),
+                ], width=4),
         dbc.Col([
                 dbc.Card([
                     dbc.CardHeader('Select/Search the Journal from the dropdown below to see its details', style={
@@ -70,11 +78,10 @@ app.layout = dbc.Container([
                         ),
 
                     ])
-                ]),
-                ], width=6),
+                ], style={'height': '10rem'}),
+                ], width=8),
 
     ], className='mb-2 mt-2'),
-
     dbc.Row([
 
         dbc.Col([
@@ -188,12 +195,11 @@ app.layout = dbc.Container([
 
 
 
-    ], className='mb-2 mt-2'),
+    ], className='mb-2 mt-0'),
     dbc.Row([
         dbc.Col([
             dbc.Card([
                 dbc.CardBody([
-
                 ])
             ]),
         ], width=6),
@@ -205,6 +211,14 @@ app.layout = dbc.Container([
             ]),
         ], width=6),
     ], className='mb-2 mt-2'),
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    html.H4('JOURNALS FILTERING'),
+    html.Hr(style={"width": "100%", 'borderTop': '3px solid deepskyblue',
+            'borderBottom': '2px solid aqua', "opacity": "unset"}),
+    html.H6('In this section, use the left section to select the criteria in which you want to filter the journals, those that meet the criteria you select shall be dsiplayed on the right'),
+
     dbc.Row([
         dbc.Col([
             dbc.Card([
@@ -278,17 +292,14 @@ app.layout = dbc.Container([
         ], width=7),
     ], className='mb-2 mt-5'),
 
-    dbc.Row([
-            dbc.Col([
-                dbc.Card([
-                    dbc.CardBody([
-                        dbc.CardHeader(''),
-                        dcc.Graph(id='bar-chart', figure={}),
-                    ])
-                ]),
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    html.H4('VISUALIZATIONS'),
+    html.Hr(style={"width": "100%", 'borderTop': '3px solid deepskyblue',
+            'borderBottom': '2px solid aqua', "opacity": "unset"}),
+    html.H6('In this section, use the dropdown on the left to select the platform which you want to see journas aggreagtion information visually.'),
 
-            ], width=12),
-            ], className='mb-2, mt-3'),
 
     dbc.Row([
         dbc.Col([
@@ -299,29 +310,45 @@ app.layout = dbc.Container([
                 dbc.CardBody([
                     html.H6('OPTIONS'),
                     html.H5(id='', children="_____________"),
-
-                    dcc.Checklist(
+                    dcc.Dropdown(
                         options=[
-                            {'label': ' African Journal Online (AJOL)',
+                            {'label': 'Journals on Any of the Platforms',
+                                'value': 'null'},
+                            {'label': 'African Journal Online (AJOL)',
                              'value': 'African Journal Online (AJOL)'},
-                            {'label': ' SABINET Journal repository',
-                             'value': 'SABINET Journal repository'},
+                            {'label': 'SABINET Journal repository',
+                             'value': 'SABINET Journal repository'}
                         ],
-                        id='platform-checklist-id',
-                        style={
-                            'textAlign': 'left', 'margin-bottom': '10px', 'font-size': '10px'},
-                        value=[],  # Set the initial value of the checklist
+                        value='null',
+                        id='plat-dropdown-id'
                     ),
 
-                    dcc.Store(id='selected-platform-store')
+                    dcc.Store(id='selected-platform-store'),
+
 
                 ], style={'textAlign': 'center',
                           'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'}
                 )
 
-            ])
+            ], style={'height': '100%'})
+        ], width=4),
+        dbc.Col([
+                dbc.Card([
+                    dbc.CardBody([
+                        dbc.CardHeader(''),
+                        dcc.Graph(id='bar-chart', figure={}),
+                    ], style={'textAlign': 'center',
+                              'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
+                ]),
 
-        ], width=2),
+                ], width=8),
+    ], className='mb-2, mt-3'),
+    dbc.Row([
+    ]),
+
+
+
+    dbc.Row([
         dbc.Col([
             dbc.Card([
                 dbc.CardHeader(''),
@@ -329,10 +356,11 @@ app.layout = dbc.Container([
                          'color': 'darkviolet', 'font-weight': 'bold', 'font-size': '10px', 'text-align': 'center'}),
                 dbc.CardBody([
                     dcc.Graph(id='gs-pie-chart', figure={}),
-                ])
+                ], style={'textAlign': 'center',
+                          'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
             ]),
 
-        ], width=5),
+        ], width=6),
         dbc.Col([
             dbc.Card([
                 dbc.CardHeader(''),
@@ -341,10 +369,11 @@ app.layout = dbc.Container([
 
                 dbc.CardBody([
                     dcc.Graph(id='scopus-bar-chart', figure={}),
-                ])
+                ], style={'textAlign': 'center',
+                          'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
             ]),
 
-        ], width=5),
+        ], width=6),
     ], className='mb-2, mt-3'),
 
     dbc.Row([
@@ -355,7 +384,8 @@ app.layout = dbc.Container([
                          'color': 'darkviolet', 'font-weight': 'bold', 'font-size': '10px', 'text-align': 'center'}),
                 dbc.CardBody([
                     dcc.Graph(id='doaj-donut-chart', figure={}),
-                ])
+                ], style={'textAlign': 'center',
+                          'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
             ]),
         ], width=6),
         dbc.Col([
@@ -365,7 +395,8 @@ app.layout = dbc.Container([
                          'color': 'darkviolet', 'font-weight': 'bold', 'font-size': '10px', 'text-align': 'center'}),
                 dbc.CardBody([
                     dcc.Graph(id='oneplat-column-chart', figure={}),
-                ])
+                ], style={'textAlign': 'center',
+                          'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
             ]),
 
         ], width=6)
@@ -379,7 +410,8 @@ app.layout = dbc.Container([
                     'color': 'darkviolet', 'font-weight': 'bold', 'font-size': '10px', 'text-align': 'center'}),
                 dbc.CardBody([
                     dcc.Graph(id='basedinafrica-pop-chart', figure={}),
-                ])
+                ], style={'textAlign': 'center',
+                          'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
             ]),
         ], width=6),
         dbc.Col([
@@ -389,7 +421,8 @@ app.layout = dbc.Container([
                          'color': 'darkviolet', 'font-weight': 'bold', 'font-size': '10px', 'text-align': 'center'}),
                 dbc.CardBody([
                     dcc.Graph(id='oaj-donut-chart', figure={}),
-                ])
+                ], style={'textAlign': 'center',
+                          'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
             ]),
 
         ], width=6)
@@ -402,7 +435,8 @@ app.layout = dbc.Container([
                          'color': 'darkviolet', 'font-weight': 'bold', 'font-size': '10px', 'text-align': 'center'}),
                     dbc.CardBody([
                         dcc.Graph(id='issn-bar-chart', figure={}),
-                    ])
+                    ], style={'textAlign': 'center',
+                              'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
                 ]),
             ], width=6),
             dbc.Col([
@@ -412,7 +446,8 @@ app.layout = dbc.Container([
                          'color': 'darkviolet', 'font-weight': 'bold', 'font-size': '10px', 'text-align': 'center'}),
                     dbc.CardBody([
                         dcc.Graph(id='cope-column-chart', figure={}),
-                    ])
+                    ], style={'textAlign': 'center',
+                              'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
                 ]),
 
             ], width=6)
@@ -425,7 +460,8 @@ app.layout = dbc.Container([
                     'color': 'darkviolet', 'font-weight': 'bold', 'font-size': '10px', 'text-align': 'center'}),
                 dbc.CardBody([
                              dcc.Graph(id='inasp-bar-chart', figure={}),
-                             ])
+                             ], style={'textAlign': 'center',
+                                       'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
             ]),
         ], width=12),
 
@@ -436,7 +472,8 @@ app.layout = dbc.Container([
                 dbc.CardHeader(''),
                 dbc.CardBody([
 
-                ])
+                ], style={'textAlign': 'center',
+                          'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
             ]),
         ], width=6),
         dbc.Col([
@@ -444,7 +481,8 @@ app.layout = dbc.Container([
                 dbc.CardHeader(''),
                 dbc.CardBody([
 
-                ])
+                ], style={'textAlign': 'center',
+                          'box-shadow': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'})
             ]),
 
         ], width=6)
@@ -702,7 +740,7 @@ def save_selected_values(selected_values):
 
 @app.callback(
     Output('selected-platform-store', 'data'),
-    [Input('platform-checklist-id', 'value')]
+    [Input('plat-dropdown-id', 'value')]
 )
 def save_selected_platform(selected_platforms):
     return selected_platforms
@@ -778,6 +816,7 @@ def update_source(selected_values):
     [Input('selected-values-store', 'data')]
 )
 def platform_bar(plats):
+
     df = data.copy()
     ajol = len(
         df[df['Platform'] == 'African Journal Online (AJOL)'])
@@ -812,12 +851,10 @@ def platform_bar(plats):
 )
 def google_scholar(plats):
     df = data.copy()
-    if len(plats) > 0:
-        for i in plats:
-            df = df[data['Platform'] == i]
-    else:
+    if (plats == 'null'):
         df = df
-    #     df = data[data['Platform'] == platform]
+    else:
+        df = df[data['Platform'] == plats]
     g_yes = len(df[df['Indexed on Google Scholar'] == 1])
     g_no = len(df[df['Indexed on Google Scholar'] == 0])
     if g_yes > 0:
@@ -852,11 +889,10 @@ def google_scholar(plats):
 )
 def scopus(plats):
     df = data.copy()
-    if len(plats) > 0:
-        for i in plats:
-            df = df[data['Platform'] == i]
-    else:
+    if (plats == 'null'):
         df = df
+    else:
+        df = df[data['Platform'] == plats]
     #     df = data[data['Platform'] == platform]
     g_yes = len(df[df['Indexed on Scopus'] == 1])
     g_no = len(df[df['Indexed on Scopus'] == 0])
@@ -893,11 +929,10 @@ def scopus(plats):
 )
 def issn(plats):
     df = data.copy()
-    if len(plats) > 0:
-        for i in plats:
-            df = df[data['Platform'] == i]
-    else:
+    if (plats == 'null'):
         df = df
+    else:
+        df = df[data['Platform'] == plats]
     #     df = data[data['Platform'] == platform]
     g_yes = len(
         df[df['Present on International Standard Serial Number (ISSN) portal'] == 1])
@@ -936,11 +971,10 @@ def issn(plats):
 )
 def doaj(plats):
     df = data.copy()
-    if len(plats) > 0:
-        for i in plats:
-            df = df[data['Platform'] == i]
-    else:
+    if (plats == 'null'):
         df = df
+    else:
+        df = df[data['Platform'] == plats]
 
     g_yes = len(
         df[df['Journal listed in the Directory of Open Access (DOAJ)'] == 1])
@@ -984,11 +1018,10 @@ def doaj(plats):
 )
 def oaj(plats):
     df = data.copy()
-    if len(plats) > 0:
-        for i in plats:
-            df = df[data['Platform'] == i]
-    else:
+    if (plats == 'null'):
         df = df
+    else:
+        df = df[data['Platform'] == plats]
 
     g_yes = len(
         df[df['Open Access Journal'] == 1])
@@ -1032,11 +1065,10 @@ def oaj(plats):
 )
 def cope(plats):
     df = data.copy()
-    if len(plats) > 0:
-        for i in plats:
-            df = df[df['Platform'] == i]
-    else:
+    if (plats == 'null'):
         df = df
+    else:
+        df = df[data['Platform'] == plats]
 
     g_yes = len(
         df[df['The publisher is a member of Committee on publication Ethics (COPE)'] == 1])
@@ -1078,19 +1110,18 @@ def cope(plats):
 )
 def inasp(plats):
     df = data.copy()
-    if len(plats) > 0:
-        for i in plats:
-            df = df[df['Platform'] == i]
-    else:
+    if (plats == 'null'):
         df = df
-
+    else:
+        df = df[data['Platform'] == plats]
     g_yes = len(
         df[df['Hosted on INASP\'S Journal online'] == 1])
     g_no = len(
         df[df['Hosted on INASP\'S Journal online'] == 0])
-    dff = pd.DataFrame(data=[[g_yes, g_no]], columns=['YES', 'NO'])
+    if (len(df) > 0):
+        dff = pd.DataFrame(data=[[g_yes, g_no]], columns=['YES', 'NO'])
 
-    if g_yes > 0:
+        # if g_yes > 0:
         colors = ['#F3C702', '#AA2120']
 
         fig_bar = make_subplots(rows=1, cols=1)
@@ -1110,11 +1141,7 @@ def inasp(plats):
 
         fig_bar.update_xaxes(title_text="Count")
         fig_bar.update_yaxes(title_text="Hosted on INASP\'S Journal onlineE")
-
-    else:
-        fig_bar = go.Figure()
-
-    return fig_bar
+        return fig_bar
 
 
 # ONE PLATFORM BAR GRAPH *****************************************************************
@@ -1126,11 +1153,10 @@ def inasp(plats):
 )
 def onePlatform(plats):
     df = data.copy()
-    if len(plats) > 0:
-        for i in plats:
-            df = df[df['Platform'] == i]
-    else:
+    if (plats == 'null'):
         df = df
+    else:
+        df = df[data['Platform'] == plats]
 
     g_yes = len(df[df['Indexed on at least one platform'] == 1])
     g_no = len(df[df['Indexed on at least one platform'] == 0])
@@ -1170,11 +1196,10 @@ def onePlatform(plats):
 )
 def publisherinAfrica(plats):
     df = data.copy()
-    if len(plats) > 0:
-        for i in plats:
-            df = df[df['Platform'] == i]
-    else:
+    if (plats == 'null'):
         df = df
+    else:
+        df = df[data['Platform'] == plats]
 
     g_yes = len(df[df['Online publisher based in Africa'] == 1])
     g_no = len(df[df['Online publisher based in Africa'] == 0])
