@@ -762,50 +762,38 @@ def save_selected_platform(selected_platforms):
     [Input('selected-platform-store', 'data')]
 )
 def update_source(selected_values):
-    if (len(selected_values) == 0):
-        header = 'All Jourals in either African Journal Online (AJOL) or SABINET Journal Repository'
-        header1 = 'All Jourals in either African Journal Online (AJOL) or SABINET Journal Repository'
-        header2 = 'All Jourals in either African Journal Online (AJOL) or SABINET Journal Repository'
-        header3 = 'All Jourals in either African Journal Online (AJOL) or SABINET Journal Repository'
-        header4 = 'All Jourals in either African Journal Online (AJOL) or SABINET Journal Repository'
-        header5 = 'All Jourals in either African Journal Online (AJOL) or SABINET Journal Repository'
-        header6 = 'All Jourals in either African Journal Online (AJOL) or SABINET Journal Repository'
-        header7 = 'All Jourals in either African Journal Online (AJOL) or SABINET Journal Repository'
-        header8 = 'All Jourals in either African Journal Online (AJOL) or SABINET Journal Repository'
+    if (selected_values == 'null'):
+        header = 'Journal in any of African Journal Online (AJOL) and SABINET Journal Repository'
+        header1 = 'Journal in any of African Journal Online (AJOL) and SABINET Journal Repository'
+        header2 = 'Journal in any of African Journal Online (AJOL) and SABINET Journal Repository'
+        header3 = 'Journal in any of African Journal Online (AJOL) and SABINET Journal Repository'
+        header4 = 'Journal in any of African Journal Online (AJOL) and SABINET Journal Repository'
+        header5 = 'Journal in any of African Journal Online (AJOL) and SABINET Journal Repository'
+        header6 = 'Journal in any of African Journal Online (AJOL) and SABINET Journal Repository'
+        header7 = 'Journal in any of African Journal Online (AJOL) and SABINET Journal Repository'
+        header8 = 'Journal in any of African Journal Online (AJOL) and SABINET Journal Repository'
+
+    elif (selected_values == 'SABINET Journal repository'):
+        header = 'Journals in SABINET Journal repository'
+        header1 = 'Journals in SABINET Journal repository'
+        header2 = 'Journals in SABINET Journal repository'
+        header3 = 'Journals in SABINET Journal repository'
+        header4 = 'Journals in SABINET Journal repository'
+        header5 = 'Journals in SABINET Journal repository'
+        header6 = 'Journals in SABINET Journal repository'
+        header7 = 'Journals in SABINET Journal repository'
+        header8 = 'Journals in SABINET Journal repository'
 
     else:
-        if (('African Journal Online (AJOL)' in selected_values) and ('SABINET Journal repository' in selected_values)):
-            header = 'Journal in both African Journal Online (AJOL) and SABINET Journal Repository'
-            header1 = 'Journal in both African Journal Online (AJOL) and SABINET Journal Repository'
-            header2 = 'Journal in both African Journal Online (AJOL) and SABINET Journal Repository'
-            header3 = 'Journal in both African Journal Online (AJOL) and SABINET Journal Repository'
-            header4 = 'Journal in both African Journal Online (AJOL) and SABINET Journal Repository'
-            header5 = 'Journal in both African Journal Online (AJOL) and SABINET Journal Repository'
-            header6 = 'Journal in both African Journal Online (AJOL) and SABINET Journal Repository'
-            header7 = 'Journal in both African Journal Online (AJOL) and SABINET Journal Repository'
-            header8 = 'Journal in both African Journal Online (AJOL) and SABINET Journal Repository'
-
-        elif ('SABINET Journal repository' in selected_values):
-            header = 'Journals in SABINET Journal repository'
-            header1 = 'Journals in SABINET Journal repository'
-            header2 = 'Journals in SABINET Journal repository'
-            header3 = 'Journals in SABINET Journal repository'
-            header4 = 'Journals in SABINET Journal repository'
-            header5 = 'Journals in SABINET Journal repository'
-            header6 = 'Journals in SABINET Journal repository'
-            header7 = 'Journals in SABINET Journal repository'
-            header8 = 'Journals in SABINET Journal repository'
-
-        else:
-            header = 'Journals in African Journal Online (AJOL)'
-            header1 = 'Journals in African Journal Online (AJOL)'
-            header2 = 'Journals in African Journal Online (AJOL)'
-            header3 = 'Journals in African Journal Online (AJOL)'
-            header4 = 'Journals in African Journal Online (AJOL)'
-            header5 = 'Journals in African Journal Online (AJOL)'
-            header6 = 'Journals in African Journal Online (AJOL)'
-            header7 = 'Journals in African Journal Online (AJOL)'
-            header8 = 'Journals in African Journal Online (AJOL)'
+        header = 'Journals in African Journal Online (AJOL)'
+        header1 = 'Journals in African Journal Online (AJOL)'
+        header2 = 'Journals in African Journal Online (AJOL)'
+        header3 = 'Journals in African Journal Online (AJOL)'
+        header4 = 'Journals in African Journal Online (AJOL)'
+        header5 = 'Journals in African Journal Online (AJOL)'
+        header6 = 'Journals in African Journal Online (AJOL)'
+        header7 = 'Journals in African Journal Online (AJOL)'
+        header8 = 'Journals in African Journal Online (AJOL)'
 
     return header, header1, header2, header3, header4, header5, header6, header7, header8
 
